@@ -1,6 +1,6 @@
-package com.athornatus.responses;
+package com.athornatus.api.responses;
 
-import com.athornatus.models.Address;
+import com.athornatus.domain.model.Address;
 import lombok.Builder;
 import lombok.Data;
 import java.time.LocalDate;

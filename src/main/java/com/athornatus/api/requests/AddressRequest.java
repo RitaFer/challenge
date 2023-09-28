@@ -1,20 +1,17 @@
-package com.athornatus.responses;
+package com.athornatus.api.requests;
 
 import lombok.Builder;
 import lombok.Data;
 
-import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Data
 @Builder
-public class AddressResponse {
+public class AddressRequest {
     private UUID id;
     private String cep;
     private String city;
     private String number;
     private String street;
     private Boolean principal;
-    private LocalDateTime createdAt;
-    private LocalDateTime updatedAt;
 }

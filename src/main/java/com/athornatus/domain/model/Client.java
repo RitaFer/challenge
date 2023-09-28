@@ -1,7 +1,7 @@
-package com.athornatus.models;
+package com.athornatus.domain.model;
 
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
+import jakarta.persistence.Entity;
+import jakarta.persistence.OneToMany;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 import java.time.LocalDate;

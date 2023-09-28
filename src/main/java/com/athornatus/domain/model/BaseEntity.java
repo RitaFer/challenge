@@ -1,10 +1,10 @@
-package com.athornatus.models;
+package com.athornatus.domain.model;
 
 import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.UUID;
-import javax.persistence.*;
+import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 
@@ -29,5 +29,9 @@ public class BaseEntity {
     @PreUpdate
     public void preUpdate() {
         this.updatedAt = Instant.now().atZone(ZoneId.of("UTC")).toLocalDateTime();
+    }
+
+    public boolean isEqualsId(UUID id) {
+        return id.equals(this.id);
     }
 }

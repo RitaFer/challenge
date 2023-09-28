@@ -1,14 +1,14 @@
-package com.athornatus.models;
+package com.athornatus.domain.model;
 
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 
-import javax.persistence.Entity;
+import jakarta.persistence.Entity;
 
 @Data
 @Entity
@@ -26,8 +26,4 @@ public class Address extends BaseEntity {
     @ManyToOne
     @JoinColumn(name="client_id")
     private Client client;
-
-    public boolean isPrincipal() {
-        return this.principal;
-    }
 }
