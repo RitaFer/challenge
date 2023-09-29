@@ -4,7 +4,7 @@ public interface ApiMapping {
     String API_V1 = "/api/v1";
 
     interface clients {
-        String MAPPING = "/clients";
+        String MAPPING = API_V1 + "/clients";
     }
 
     interface address {

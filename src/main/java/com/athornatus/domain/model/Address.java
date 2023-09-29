@@ -1,6 +1,5 @@
 package com.athornatus.domain.model;
 
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -24,6 +23,5 @@ public class Address extends BaseEntity {
     private Boolean principal;
 
     @ManyToOne
-    @JoinColumn(name="client_id")
     private Client client;
 }

@@ -1,6 +1,8 @@
 package com.athornatus.bussiness.services;
 
 import com.athornatus.bussiness.util.ConverterEntities;
+import com.athornatus.bussiness.util.exceptions.BadRequestException;
+import com.athornatus.bussiness.util.exceptions.NotFoundException;
 import com.athornatus.domain.model.Address;
 import com.athornatus.domain.model.Client;
 import com.athornatus.domain.repositories.AddressRepository;
@@ -12,8 +14,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.ws.rs.BadRequestException;
-import javax.ws.rs.NotFoundException;
 import java.util.List;
 import java.util.UUID;
 

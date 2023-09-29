@@ -1,6 +1,8 @@
 package com.athornatus.bussiness.services;
 
 import com.athornatus.bussiness.util.ConverterEntities;
+import com.athornatus.bussiness.util.exceptions.BadRequestException;
+import com.athornatus.bussiness.util.exceptions.NotFoundException;
 import com.athornatus.domain.model.Address;
 import com.athornatus.domain.model.Client;
 import com.athornatus.domain.repositories.ClientRepository;
@@ -12,8 +14,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.ws.rs.BadRequestException;
-import javax.ws.rs.NotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -29,6 +29,10 @@ public class ClientService {
     public Client create(final ClientRequest clientForm){
         if(clientForm.getId() != null){
             throw new BadRequestException("You can't create a client with an id configureted.");
+        }
+
+        if(clientForm.getName() == null || clientForm.getBirthday() == null){
+            throw new BadRequestException("You can't send null attributes.");
         }
 
         Client client = converter.clientRequestToClient(clientForm);
@@ -58,6 +62,10 @@ public class ClientService {
             throw new BadRequestException("You must send an id when update a client.");
         }
 
+        if(clientForm.getName() == null || clientForm.getBirthday() == null){
+            throw new BadRequestException("You can't send null attributes.");
+        }
+
         Client oldClient = findById(clientForm.getId());
         Client newClient = clientRepository.saveAndFlush(converter.clientToClient(oldClient, converter.clientRequestToClient(clientForm)));
 
@@ -74,7 +82,7 @@ public class ClientService {
             }
         }
 
-        if (!actualAddress.isEmpty()) {
+        if (actualAddress != null && !actualAddress.isEmpty()) {
             addressService.updateDeleteList(actualAddress, newAddress);
         }
 
